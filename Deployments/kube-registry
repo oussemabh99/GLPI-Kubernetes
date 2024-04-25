@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: kube-registry
+ namespace: devops
+ labels:
+  type: registry
+spec:
+ template:
+  metadata:
+   name: kube-registry
+   namespace: devops
+   labels:
+    type: registry
+  spec:
+   containers:
+   - image: registry:2
+     name: kube-registry
+     ports:
+     - containerPort: 5000
+ selector:
+  matchLabels:
+   type: registry
+ replicas: 2
