@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: kube-registry
+ namespace: devops
+ labels:
+  type: kube-registry
+spec:
+ selector:
+  matchLabels:
+   type: kube-registry
+ replicas: 2
+ template:
+  metadata:
+   labels:
+    type: kube-registry
+  spec:
+   initContainers:
+   - name: kube-registry-initiation
+     image: httpd
+     command: ["htpasswd"]
+     args:
+     - "-Bb"
+     - "-c"
+     - "/tmp/htpasswd"
+     - "$(user)"
+     - "$(password)"
+     env:
+     - name: user
+       valueFrom:
+        secretKeyRef:
+          name: secret1
+          key: user
+     - name: password
+       valueFrom:
+        secretKeyRef:
+          name: secret1
+          key: password
+     volumeMounts:
+     - name: cred
+       mountPath: /tmp/
+   containers:
+   - image: registry:latest
+     name: kube-registry
+     ports:
+     - containerPort: 5000
+     env:
+     - name: REGISTRY_AUTH
+       value: htpasswd
+     - name: REGISTRY_AUTH_HTPASSWD_REALM
+       value: Registry Realm
+     - name: REGISTRY_AUTH_HTPASSWD_PATH
+       value: /tmp/htpasswd
+     volumeMounts:
+     - name: cred
+       mountPath: /tmp/
+   volumes:
+   - name: cred
+     hostPath:
+      path: /data/
