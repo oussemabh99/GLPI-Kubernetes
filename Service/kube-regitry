@@ -5,7 +5,7 @@ metadata:
  name: kube-local-registry
 spec:
  selector:
-  type: registry
+  type: kube-registry
  type: NodePort
  ports:
   - targetPort: 5000
