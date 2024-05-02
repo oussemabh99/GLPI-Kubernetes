@@ -4,8 +4,8 @@ kubectl create -f $(pwd)/pods/namespace.yaml;
 kubectl create -f $(pwd)/secrets/secret1.yaml;
 kubectl create -f $(pwd)/Deployments/kube-registry-2.yaml;
 kubectl create -f $(pwd)/Service/kube-regitry.yaml;
-kubectl create -f $(pwd)/Volumes/pv-host.yaml
-kubectl create -f $(pwd)/Volumes/pvc-host.yaml
+kubectl create -f $(pwd)/Volume/pv-host.yaml
+kubectl create -f $(pwd)/Volume/pvc-host.yaml
 
 sleep 10 ;
 if ( curl -v  localhost:32000); then
