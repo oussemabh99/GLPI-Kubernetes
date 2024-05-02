@@ -56,5 +56,5 @@ spec:
        mountPath: /tmp/
    volumes:
    - name: cred
-     hostPath:
-      path: /data/
+     emptyDir:
+      sizeLimit: 1Mi
