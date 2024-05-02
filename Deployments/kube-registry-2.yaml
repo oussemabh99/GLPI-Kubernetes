@@ -54,7 +54,12 @@ spec:
      volumeMounts:
      - name: cred
        mountPath: /tmp/
+     - name: claim
+       mountPath: /var/lib/registry/
    volumes:
    - name: cred
      emptyDir:
       sizeLimit: 1Mi
+   - name: claim
+     persistentVolumeClaim:
+      claimName: pvc-local
