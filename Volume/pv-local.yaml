@@ -4,7 +4,7 @@ metadata:
   name: pv-local
 spec:
   capacity:
-    storage: 300Mi
+    storage: 1Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteMany
@@ -20,4 +20,4 @@ spec:
           operator: In
           values:
           - node01
-          
+          - controlplane
