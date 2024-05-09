@@ -12,6 +12,7 @@ spec:
  replicas: 1
  template:
   metadata:
+   namespace: devops
    labels:
     type: kube-registry
   spec:
