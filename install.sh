@@ -7,7 +7,7 @@ kubectl create -f $(pwd)/Service/kube-regitry.yaml;
 kubectl create -f $(pwd)/Volume/pv-local.yaml
 kubectl create -f $(pwd)/Volume/pvc-local.yaml
 
-sleep 10 ;
+sleep 20 ;
 if ( curl -v  localhost:32000); then
    if (docker login localhost:32000); then
     docker pull alpine && docker tag alpine:latest localhost:32000/myos:v1 && docker push localhost:32000/myos:v1 &&
