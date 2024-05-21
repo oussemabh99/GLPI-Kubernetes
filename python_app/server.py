@@ -4,7 +4,7 @@ import json
 app = Flask(__name__)
 @app.route("/")
 def index() :
-  r = rq.get('http://localhost:32000/v2/_catalog', auth=('admin', 'oussemaest19'))
+  r = rq.get('http://kube-local-registry:5000/v2/_catalog', auth=('admin', 'oussemaest19'))
   exe = r.text
   test= json.loads(exe)
   i = 0
