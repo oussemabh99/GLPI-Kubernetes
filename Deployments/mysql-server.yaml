@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mysql-deploy
+ namespace: devops
+ labels:
+  type: database
+spec:
+ template:
+  metadata: 
+   name: mysql-pod
+   namespace: devops
+   labels: 
+    type: database
+  spec:
+   containers:
+   - name: mysql
+     image: mysql
+     env: 
+     - name: MYSQL_ROOT_PASSWORD
+       value: oussemaest19
+ selector:
+   matchLabels:
+    type: database
+ replicas: 1
