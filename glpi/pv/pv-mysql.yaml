@@ -16,4 +16,4 @@ spec:
     readOnly: no
   claimRef:              
    namespace: default
-   name: pvc-mysql
+   name: mysql

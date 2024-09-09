@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: glpi
+ labels:
+  type: glpi
+spec:
+ template:
+  metadata:
+   labels: 
+    type: glpi
+  spec:
+   containers: 
+   - name: glpi
+     image: oussemabh999/glpi:v1.2
+     command: ["/bin/bash"]
+     args:
+     - "script.sh"
+     volumeMounts:
+     - name: config
+       mountPath: /var/www/html/glpi/config
+     - name: files
+       mountPath: /var/www/html/glpi/files
+     - name: marketplace
+       mountPath: /var/www/html/glpi/marketplace
+     - name: plugin
+       mountPath: /var/www/html/glpi/plugin
+   volumes:
+   - name: config
+     persistentVolumeClaim:
+      claimName: config
+   - name: files
+     persistentVolumeClaim:
+      claimName: files
+   - name: marketplace
+     persistentVolumeClaim:
+      claimName: marketplace
+   - name: plugin
+     persistentVolumeClaim:
+      claimName: plugin
+ selector:
+  matchLabels:
+   type: glpi
+ replicas: 3  
+

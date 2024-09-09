@@ -4,7 +4,7 @@ metadata:
   name: config
 spec:
   capacity:
-    storage: 4Gi
+    storage: 20Mi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteMany
@@ -17,3 +17,4 @@ spec:
   claimRef:           
     namespace: default
     name: config
+  

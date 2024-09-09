@@ -14,3 +14,6 @@ spec:
     server: controlplane
     path: /srv/marketplace
     readOnly: no
+  claimRef:
+   namespace: default
+   name: marketplace
