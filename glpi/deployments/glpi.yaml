@@ -41,5 +41,5 @@ spec:
  selector:
   matchLabels:
    type: glpi
- replicas: 3  
+ replicas: 1
 
