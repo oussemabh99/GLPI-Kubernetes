@@ -7,7 +7,7 @@ metadata:
  namespace: devops
 spec:
  containers:
- - image: localhost:32000/flask:v2
+ - image: localhost:5000/flask:v2
    name: flask-container
  imagePullSecrets:
  - name: auth
@@ -20,10 +20,8 @@ metadata:
 spec:
  selector:
   type: flask 
- type: NodePort
  ports:
  - port: 5000
-   nodePort: 30080
    targetPort: 5000
  
 

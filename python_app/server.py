@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import requests as rq
 import json
 app = Flask(__name__)
-@app.route("/")
+@app.route("/home")
 def index() :
   r = rq.get('http://kube-local-registry:5000/v2/_catalog', auth=('admin', 'oussemaest19'))
   exe = r.text

@@ -8,10 +8,10 @@ kubectl create -f $(pwd)/Volume/pv-local.yaml
 kubectl create -f $(pwd)/Volume/pvc-local.yaml
 
 sleep 20 ;
-if ( curl -v  localhost:32000); then
-   if (docker login localhost:32000); then
-    docker build -t localhost:32000/flask:v2 ./python_app/ && docker push localhost:32000/flask:v2 &&
-    docker pull alpine && docker tag alpine:latest localhost:32000/myos:v1 && docker push localhost:32000/myos:v1 &&
+if ( curl -v  localhost:5000); then
+   if (docker login localhost:5000); then
+    docker build -t localhost:5000/flask:v2 ./python_app/ && docker push localhost:5000/flask:v2 &&
+    docker pull alpine && docker tag alpine:latest localhost:5000/myos:v1 && docker push localhost:5000/myos:v1 &&
     kubectl create secret generic auth --from-file .dockerconfigjson=/root/.docker/config.json --type kubernetes.io/dockerconfigjson -n devops && 
     kubectl create -f $(pwd)/python_app/pod &&
     sleep 20 && curl -v 127.0.0.1:30080
