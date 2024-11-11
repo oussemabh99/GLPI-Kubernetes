@@ -10,11 +10,11 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "*.papa.r.killercoda.com"
+  - host: "localhost"
     http:
       paths:
       - path: /home
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: flask

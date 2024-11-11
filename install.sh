@@ -13,8 +13,8 @@ if ( curl -v  localhost:5000); then
     docker build -t localhost:5000/flask:v2 ./python_app/ && docker push localhost:5000/flask:v2 &&
     docker pull alpine && docker tag alpine:latest localhost:5000/myos:v1 && docker push localhost:5000/myos:v1 &&
     kubectl create secret generic auth --from-file .dockerconfigjson=/root/.docker/config.json --type kubernetes.io/dockerconfigjson -n devops && 
-    kubectl create -f $(pwd)/python_app/pod &&
-    sleep 20 && curl -v 127.0.0.1:30080
+    kubectl create -f $(pwd)/python_app/pod && kubectl create -f $(pwd)/python_app/ingress.yaml
+    sleep 20 && curl -v localhost/home
    else 
     echo "ereur";
    fi

@@ -11,3 +11,5 @@ cd ../deployments
 kubectl create -f .
 cd ../.
 kubectl create -f .
+cd ingress
+kubectl create -f .
