@@ -4,7 +4,7 @@ metadata:
   name: pv-local
 spec:
   capacity:
-    storage: 4Gi
+    storage: 5Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteMany
